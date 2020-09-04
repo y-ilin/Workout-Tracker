@@ -14,10 +14,12 @@ router.get("/api/workouts", (req, res) => {
 // Add Exercise
 router.put("/api/workouts/:id", (req, res) => {
     const id = req.params.id;
-    console.log(req.body);
 
-    Workout.findByIdAndUpdate(id, { $push: {exercises: req.body} }, {new: true}, (data) => {
-        console.log("add exercise: ", data);
+    Workout.findByIdAndUpdate(id, { $push: {exercises: req.body} }, {new: true}, (err, docs) => {
+        if (err) {
+            console.log(err)
+        }
+        res.json(docs);
     });
 
     // Workout.find({}, (err, docs) => console.log(docs));
