@@ -1,0 +1,50 @@
+const router = require("express").Router();
+const Workout = require("../models/Workout.js");
+
+// Get last workout
+router.get("/api/workouts", (req, res) => {
+    Workout.find({}, (err, docs) => {
+        if (err) {
+            console.log(err)
+        }
+        res.json(docs);
+    })
+})
+
+// Add Exercise
+router.put("/api/workouts/:id", (req, res) => {
+    const id = req.params.id;
+    console.log(req.body);
+
+    Workout.findByIdAndUpdate(id, { $push: {exercises: req.body} }, {new: true}, (data) => {
+        console.log("add exercise: ", data);
+    });
+
+    // Workout.find({}, (err, docs) => console.log(docs));
+
+})
+
+// Create workout
+router.post("/api/workouts", ({ body }, res) => {
+    Workout.create({
+        day: new Date(),
+        exercises: [],
+    }).then( (workoutData) => {
+        res.json(workoutData);
+    })
+
+    // Workout.find({}, (err, docs) => console.log(docs));
+})
+
+// Get all workouts in range
+router.get("/api/workouts/range", (req, res) => {
+    Workout.find({}, (err, docs) => {
+        if (err) {
+            console.log(err)
+        }
+        res.json(docs);
+    })
+})
+
+
+module.exports = router;
