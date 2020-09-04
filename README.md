@@ -21,8 +21,12 @@ npm i
 ## Usage
 Deployed application link TBA..
 
-The application will look something like this:
-![Application Screenshot](./public/application-screenshot.png)
+The application landing page will look something like this:
+![Application Landing Page Screenshot](./public/application-screenshot-landing.png)
+
+And the workout dashboard something like this:
+![Application Dashboard Page Screenshot](./public/application-screenshot-dashboard.png)
+
 
 ## License
 Licensed under the MIT License.
