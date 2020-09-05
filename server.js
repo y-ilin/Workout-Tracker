@@ -24,10 +24,6 @@ mongoose.connect(
   }
 );
 
-// apply seed file
-const seed = require("./seeders/seed.js");
-seed();
-
 // routes
 app.use(require("./routes/api-routes.js"));
 app.use(require("./routes/html-routes.js"));
