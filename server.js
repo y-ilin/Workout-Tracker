@@ -21,7 +21,12 @@ mongoose.connect(
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
-  });
+  }
+);
+
+// apply seed file
+const seed = require("./seeders/seed.js");
+seed();
 
 // routes
 app.use(require("./routes/api-routes.js"));
